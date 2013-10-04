@@ -24,7 +24,7 @@ for n in $#
 
 for i in ls job*.html
 do	
-	perl test.pl $i #resume_template.pl	$i
+	perl resume_template.pl	$i
 done
 	
 

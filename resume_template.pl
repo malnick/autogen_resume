@@ -23,26 +23,27 @@ my %adverbs = (
 		skills => ['Ruby', 'Perl', 'Python', 'Java', 'Puppet', 'Linux', 'Red Hat', 'RHEL', 'Debian', 'Ubuntu', 'Shell', 'Bash'],
 		);
 
-# Get job description and load into array for comparison 
-print "argument: $ARGV[0]\n";
-$job_description = $ARGV[0];
-
-open FILE, $job_description or die "error opening $job_description\n";
-
-# Access loop for individual words in hash of adverbs
-for $key ( keys %adverbs ) {
-    # print "$key:\n";
-    for $word (0 .. $#{$adverbs{$key}}){
-    	# print "$adverb = $adverbs{$key}[$word]\n";
-    	$adverb = $adverbs{$key}[$word];
+#Access loop for individual words in hash of adverbs
+for $type ( keys %adverbs ) {
+    #print "$type:\n";
+    for $word (0 .. $#{$adverbs{$type}}){
+    	#print "$word = $adverbs{$type}[$word]\n";
+    	$word = $adverbs{$type}[$word];
+    	#print "$word\n";
+    	open FILE, $ARGV[0] or die "Could not open $job_description\n";
     	while ($line=<FILE>){
-			if ($line=~/$adverb/){
-			print $line " is a match\n";
+    		chomp $line;
+    		my @linearray = split(" ", $line);
+    		foreach my $i (@linearray) {
+    			#print $i;
+				if ($i=~m/^$word$/i){
+					print "Verb $word matches word $i in category $type\n";
+					#print "$i is a match\n";
+				}
 			}
-			}
-    	}
+		}
     }
-
+}
 # Hash of hashes for template 
 # my %data = 	( 	adverbs => \@adverbs,
 # 				html	=> \@html

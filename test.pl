@@ -41,8 +41,8 @@ for $type ( keys %adverbs ) {
     		my @linearray = split(" ", $line);
     		foreach my $i (@linearray) {
     			#print $i;
-				if ($i=~m/$word/i){
-					print "Verb $word matches word $i\n";
+				if ($i=~m/^$word$/i){
+					print "Verb $word matches word $i in category $type\n";
 					#print "$i is a match\n";
 				}
 			}
