@@ -1,3 +1,5 @@
+#use warnings;
+my $job_description = $ARGV[0];
 # define template variables for replacement
 my %adverbs = (
 		communication => ['Advocated', 'Clarified', 'Corresponded', 'Encouraged', 'Interpreted', 'Negotiated', 'Persuaded', 'Presented', 'Publicized', 'Solicited', 'Spoke', 'Translated'],
@@ -12,23 +14,38 @@ my %adverbs = (
 
 # Get job description and load into array for comparison 
 
-print "argument: $ARGV[0]\n";
-$job_description = $ARGV[0];
+# print "argument: $ARGV[0]\n";
+# open(my $file, '<', $job_description) or die "Could not open $job_description\n";
+# my @job_array;
+# while (my $line = <$file>){
+# 	chomp $line;
+# 	my @linearray = split(" ", $line);
+# 	push(@job_array, @linearray);
+# 	}
+# close($file);
+# 
+# for $i (@job_array){
+# 	print "@$i\n";
+# 	}
 
-open FILE, $job_description or die "error opening $job_description\n";
-
-# Access loop for individual words in hash of adverbs
-for $key ( keys %adverbs ) {
-    # print "$key:\n";
-    for $word (0 .. $#{$adverbs{$key}}){
-    	# print "$adverb = $adverbs{$key}[$word]\n";
-    	$adverb = $adverbs{$key}[$word];
+#Access loop for individual words in hash of adverbs
+for $type ( keys %adverbs ) {
+    #print "$type:\n";
+    for $word (0 .. $#{$adverbs{$type}}){
+    	#print "$word = $adverbs{$type}[$word]\n";
+    	$word = $adverbs{$type}[$word];
+    	#print "$word\n";
+    	open FILE, $ARGV[0] or die "Could not open $job_description\n";
     	while ($line=<FILE>){
-			if ($line=~/$adverb/){
-				print $line " is a match\n";
-				} else {
-				print $line " is not a match\n";
+    		chomp $line;
+    		my @linearray = split(" ", $line);
+    		foreach my $i (@linearray) {
+    			#print $i;
+				if ($i=~m/$word/i){
+					print "Verb $word matches word $i\n";
+					#print "$i is a match\n";
 				}
 			}
-    	}
+		}
     }
+}
