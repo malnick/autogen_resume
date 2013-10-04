@@ -1,3 +1,4 @@
+# define template variables for replacement
 my %adverbs = (
 		communication => ['Advocated', 'Clarified', 'Corresponded', 'Encouraged', 'Interpreted', 'Negotiated', 'Persuaded', 'Presented', 'Publicized', 'Solicited', 'Spoke', 'Translated'],
 		creative => ['Acted', 'Applied', 'Composed', 'Created', 'Established', 'Founded', 'Improvised', 'Introduced', 'Navigated', 'Originated', 'Presented'],
@@ -8,14 +9,26 @@ my %adverbs = (
 		technical => ['Analyzed', 'Assembled', 'Built', 'Calculated', 'Computed', 'Conducted', 'Designed', 'Devised', 'Engineered', 'Maintained', 'Operated', 'Programmed', 'Reengineered', 'Remodeled', 'Transmitted'],
 		skills => ['Ruby', 'Perl', 'Python', 'Java', 'Puppet', 'Linux', 'Red Hat', 'RHEL', 'Debian', 'Ubuntu', 'Shell', 'Bash'],
 		);
-		
+
+# Get job description and load into array for comparison 
+
+print "argument: $ARGV[0]\n";
+$job_description = $ARGV[0];
+
+open FILE, $job_description or die "error opening $job_description\n";
+
+# Access loop for individual words in hash of adverbs
 for $key ( keys %adverbs ) {
-    print "$key:\n";
+    # print "$key:\n";
     for $word (0 .. $#{$adverbs{$key}}){
-    	print "$word = $adverbs{$key}[$word]\n";
+    	# print "$adverb = $adverbs{$key}[$word]\n";
+    	$adverb = $adverbs{$key}[$word];
+    	while ($line=<FILE>){
+			if ($line=~/$adverb/){
+				print $line " is a match\n";
+				} else {
+				print $line " is not a match\n";
+				}
+			}
     	}
-    print "\n";
-    
-
-}
-
+    }
