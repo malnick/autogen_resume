@@ -7,23 +7,23 @@
 #
 # 	Template Toolkit: http://template-toolkit.org/download/
 #
-#####
+# Use:
+#
+#	./autogen.sh www.url.to.your.job.description.com
+#
+# Fork and contribute!
+#
+#	https://github.com/malnick/autogen_resume
+#
+#########################################################################################
 
 FILENAME=$(echo $1 | cut -d/ -f1- | cut -d. -f2)
+f=$FILENAME{$n}.html
 
 for n in $#
 	do
-		wget -O $FILENAME{$n}.html $1 && echo "Download of " $1 " successful" || echo "Download failed for " $i 
-	done
-
-for i in ls $FILENAME{$n}.html
-do	
-	perl resume_template.pl	$i
-	
-done  
-
-#mv autogen_matches.txt $FILENAME_matches.log
-	
+		wget -O $f $1 && echo "Download of " $1 " successful" || echo "Download failed for " $1
+	done && perl resume_template.pl $f || echo "Can't open perl script"	
 
 #http://inflection.com/careers/information-technology--senior-linux-system-administrator-jobs.html
 
