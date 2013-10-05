@@ -20,7 +20,7 @@ my %adverbs = (
 		leadership => ['Achieved', 'Administered', 'Assigned', 'Attained', 'Challenged', 'Coordinated', 'Decided', 'Delegated', 'Established', 'Executed', 'Handled', 'Headed', 'Implemented', 'Incorporated', 'Intervened', 'Launched', 'Led', 'Managed', 'Mediated', 'Motivated', 'Organized', 'Oversaw', 'Planned', 'Prioritized', 'Recommended', 'Scheduled', 'Supervised', 'United'],
 		efficient => ['Accelerated', 'Allocated', 'Boosted', 'Centralized', 'Downsized', 'Edited', 'Eliminated', 'Enhanced', 'Expanded', 'Expedited', 'Heightened', 'Lessened', 'Leveraged', 'Maximized', 'Merged', 'Optimized', 'Outlined', 'Outsourced', 'Prevented', 'Prioritized', 'Reorganized', 'Reduced', 'Revised', 'Simplified', 'Standardized', 'Stream-lined', 'Synthesized', 'Systematized', 'Upgraded'],
 		technical => ['Analyzed', 'Assembled', 'Built', 'Calculated', 'Computed', 'Conducted', 'Designed', 'Devised', 'Engineered', 'Maintained', 'Operated', 'Programmed', 'Reengineered', 'Remodeled', 'Transmitted'],
-		skills => ['Ruby', 'Perl', 'Python', 'Java', 'Puppet', 'Linux', 'Red Hat', 'RHEL', 'Debian', 'Ubuntu', 'Shell', 'Bash'],
+		skills => ['Ruby', 'node.js', 'Perl', 'Python', 'Java', 'Puppet', 'Linux', 'Red Hat', 'RHEL', 'Debian', 'Ubuntu', 'Shell', 'Bash'],
 		);
 
 #Access loop for individual words in hash of adverbs
@@ -36,10 +36,10 @@ for $type ( keys %adverbs ) {
     		my @linearray = split(" ", $line);
     		foreach my $i (@linearray) {
     			#print $i;
-				if ($i=~m/^$word$/i){
+				if ($i=~m/^$word/i){
 					print "Verb $word matches word $i in category $type\n";
-					open(MYOUTFILE, ">> autogen_matches.txt");
-					print MYOUTFILE "$word, $type\n";
+					#open(MYOUTFILE, ">> autogen_matches.txt");
+					#print MYOUTFILE "$word, $type\n";
 					#close(MYOUTFILE);		
 				}
 			}

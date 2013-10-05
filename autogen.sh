@@ -19,7 +19,10 @@ for n in $#
 for i in ls $FILENAME{$n}.html
 do	
 	perl resume_template.pl	$i
-done && mv autogen_matches.txt $FILENAME_matches.log
+	
+done  
+
+#mv autogen_matches.txt $FILENAME_matches.log
 	
 
 #http://inflection.com/careers/information-technology--senior-linux-system-administrator-jobs.html
