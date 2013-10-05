@@ -47,6 +47,13 @@ for $type ( keys %adverbs ) {
 		}
     }
 }
+
+# TODO
+# 	Score the results: pass results to a file, | sort | uniq | wc to get the words used most that match my dict.
+#	Compare the words and create a job_description score for most used words	
+#	Get 'Experience' blurbs and fill in resume 'Experience' section with the correct blurbs for job_description score
+
+
 # Hash of hashes for template 
 # my %data = 	( 	adverbs => \@adverbs,
 # 				html	=> \@html
