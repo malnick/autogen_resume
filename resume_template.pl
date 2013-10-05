@@ -38,7 +38,9 @@ for $type ( keys %adverbs ) {
     			#print $i;
 				if ($i=~m/^$word$/i){
 					print "Verb $word matches word $i in category $type\n";
-					#print "$i is a match\n";
+					open(MYOUTFILE, ">> autogen_matches.txt");
+					print MYOUTFILE "$word, $type\n";
+					#close(MYOUTFILE);		
 				}
 			}
 		}
