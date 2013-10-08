@@ -25,6 +25,30 @@ for n in $#
 		wget -O $f $1 && echo "Download of " $1 " successful" || echo "Download failed for " $1
 	done && perl resume_template.pl $f || echo "Can't open perl script"	
 
+sleep 3
+
+if [ -e autogen_matches.txt ]
+then
+	while read line
+	do
+		uc=$(echo $line)
+    	echo  $uc $(grep -i "$uc" autogen_matches.txt | wc -l) 
+	done < autogen_matches.txt | sort | uniq > score_values.txt || echo "Something is broken, figure it out"
+fi
+rm autogen_matches.txt
+
+
+if [ -e score_values.txt ]
+then
+	while read -a lineArray
+	do
+		echo "in loop"
+	done < score_values.txt
+fi
+
+
+
+
 #http://inflection.com/careers/information-technology--senior-linux-system-administrator-jobs.html
 
 

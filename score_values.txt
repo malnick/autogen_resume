@@ -1,0 +1,3 @@
+Linux, skills 1
+Python, skills 4
+SQL, skills 1
