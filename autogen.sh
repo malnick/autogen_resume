@@ -40,10 +40,11 @@ rm autogen_matches.txt
 
 if [ -e score_values.txt ]
 then
-	while read -a lineArray
-	do
-		echo "in loop"
-	done < score_values.txt
+	perl score_job.pl score_values.txt
+	# while read -a lineArray
+# 	do
+# 		echo "in loop"
+# 	done < score_values.txt
 fi
 
 
