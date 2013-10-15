@@ -12,7 +12,7 @@ foreach($file->getlines){
 	print "$line[2]\n";
 	} $file->close;
 
-print $input;
+
 
 #open FILE, $ARGV[0] or die "Could not open $ARGV[0]\n";
 # my @score_array = ();
