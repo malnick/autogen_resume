@@ -1,3 +1,6 @@
-Linux, skills 1
-Python, skills 4
-SQL, skills 1
+Demonstrated, help 2
+Designed, technical 1
+MS, education 1
+Managed, leadership 2
+Perl, skills 1
+amazon, skills 2

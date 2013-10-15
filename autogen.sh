@@ -33,18 +33,20 @@ then
 	do
 		uc=$(echo $line)
     	echo  $uc $(grep -i "$uc" autogen_matches.txt | wc -l) 
-	done < autogen_matches.txt | sort | uniq > score_values.txt || echo "Something is broken, figure it out"
+	done < autogen_matches.txt | sort | uniq  > score_values.txt || echo "Something is broken, figure it out"
 fi
 rm autogen_matches.txt
+sleep 1
+
+while read -a line
+do
+	
+done < score_values.txt
 
 
 if [ -e score_values.txt ]
 then
-	perl score_job.pl score_values.txt
-	# while read -a lineArray
-# 	do
-# 		echo "in loop"
-# 	done < score_values.txt
+	perl score_job.pl score_values.txt || echo "You're probably missing the score_job.pl file"
 fi
 
 
