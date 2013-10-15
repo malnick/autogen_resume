@@ -38,10 +38,15 @@ fi
 rm autogen_matches.txt
 sleep 1
 
-while read -a line
-do
-	
-done < score_values.txt
+# while read -a line
+# do
+# 	echo "${line[2]} matches for ${line[0]}" 
+# 	
+# done < score_values.txt
+# 
+# for highscore in score_values.txt
+# 	do
+		
 
 
 if [ -e score_values.txt ]
